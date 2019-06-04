@@ -1,9 +1,16 @@
 module.exports = {
-    title: '小虎API文档整理',
+    title: 'Fighting',
+    // base:'/study/',
     description: 'Just playing around',
     themeConfig: {
         nav: [
             { text: '主页', link: '/' },
+            {
+                text:'前端',
+                items:[
+                    {text:'小程序', link:'/webapp/'}
+                ]
+            },
             {
                 text: 'API文档',
                 items: [
@@ -12,7 +19,7 @@ module.exports = {
                 ]
             },
             { text: '关于', link: '/about/' },
-            { text: 'Github', link: 'https://www.github.com/codeteenager' }
+            // { text: 'Github', link: 'https://www.github.com/codeteenager' }
         ],
         sidebar: {},
         sidebarDepth: 2,

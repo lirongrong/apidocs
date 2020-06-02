@@ -15,7 +15,9 @@ module.exports = {
                 text: 'API文档',
                 items: [
                     { text: 'sparta', link: '/sparta/' },
-                    { text: 'erp', link: '/erp/' }
+                    { text: 'erp', link: '/erp/' },
+                    { text: 'touyi', link: '/touyi/' },
+                    { text: 'h5', link: '/h5/' }
                 ]
             },
             { text: '关于', link: '/about/' },

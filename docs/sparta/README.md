@@ -22,7 +22,7 @@ sidebarDepth: 2
     channel: 设备 1理财师ios, 2理财师安卓， 3壹财富微信 4壹财富pc, 5壹财富h5, 6erp pc端, 
     11壹财富直客ios, 12壹财富直客安卓, 13壹财富直客微信, 14壹财富直客pc, 15壹财富直客h5, 
     21九天ios, 22九天安卓， 26九天erp pc端，27九天pc端，34腾云pc, 1001人才库
-    role: 角色 -1潜客, 0理财师, 5高净值理财师直客, 21壹财富个人直客, 22壹财富机构直客
+    role: 角色 -1潜客, 0理财师, 5高净值理财师直客, 8员工, 21壹财富个人直客, 22壹财富机构直客
 } 
 - res
 {
@@ -153,26 +153,29 @@ sidebarDepth: 2
 @return success{
     "data": {
         "userInfo": {
-            "id": 710332,
+            "id": 710349,
             "tel": "18521948660",
-            "mapId": 101757,
+            "mapId": 710348,
+            "adminId": 798,//新加字段
+            "enterPriseId": 34,//新加字段
             "email": "",
-            "realName": "8660会员11",
-            "photo": "Upload/IOS/20190508/2019050814340332491315.jpg",
+            "realName": "李蓉蓉",
+            "photo": "",
             "isMobile": true,
-            "isAuth": false,//是否认证
+            "isAuth": true,
             "role": "个人",
             "authStatus": 0,
             "pofAccountId": "",
-            "sex": 1,
+            "sex": 0,
             "qq": "",
             "company": "",
+            "companyAddress":"",//公司地址 +
             "position": "",
             "card": "",
             "weChat": "",
             "industry": "",
             "workYear": "",
-            "idCard": "",
+            "idCard": "**************0127",
             "pid": 310000,
             "cityid": 310100,
             "province": "上海",
@@ -180,25 +183,28 @@ sidebarDepth: 2
             "area": "",
             "address": "",
             "intro": "",
-            "isIdCard": 0,
+            "isIdCard": 10,
             "isCard": 0,
             "isEdu": 0,
-            "birthday": null,
-            "riskPreference": 0,
+            "birthday": "1989-02-12 00:00:00",
+            "riskPreference": 16,
             "type": 0,
             "vip": 0,
             "hobbyProductType": "",
             "motto": "",
             "workExperience": "",
             "confirmPhoto": "",
-            "RiskRiskPreferenceDescription": "未做风险测评",
+            "RiskRiskPreferenceDescription": "稳健型",
             "groupName": "",
             "isPartner": false,
             "isQudao": false,
             "roleValue": 21,
-            "mapccId": "33bt",
-            "noMaskIdCard": "",
-            "surveyUrl": ""
+            "mapccId": "llmc",
+            "adminAid": "ou", //新加字段 + 
+            "manageCapital": 0, //管理资产 +
+            "customerCount": 0, //服务客户 +
+            "noMaskIdCard": "141181198902120127",
+            "surveyUrl": "http://127.0.0.1:3001/app/surveys/result/2?surveyId=7"
         },
         "eduExperienceList": [],
         "workExperienceList": [],
@@ -207,7 +213,7 @@ sidebarDepth: 2
     },
     "isSuccess": true,
     "code": 0,
-    "runSpanTime": 146
+    "runSpanTime": 402
 }
 ```
 
@@ -222,8 +228,10 @@ sidebarDepth: 2
 @param {date}   - birthday
 @param {init}   - pid 省
 @param {init}   - cityid 市
-@param {init}   - manageCapital 持仓资产
-@param {init}   - customerCount 服务客户数量
+@param {init}   - manageCapital 持仓资产 +
+@param {init}   - customerCount 服务客户数量 +
+@param {string} - company 公司名称
+@param {string} - companyAddress 公司地址 +
 @url post User/UpdateUserBaseInfo
 @req{
   "userMobile" : "18521948660", 
@@ -301,8 +309,7 @@ sidebarDepth: 2
 ### 获取用户其他信息
 ::: tip
 - 直客通过手机号码绑定理财师前要判断该理财师是否存在
-- ps:邀请码就是手机号码
-- 理财师邀请码 cid
+- 理财师邀请码或者手机号码 cid
 :::
 ``` js
 - req
@@ -377,8 +384,7 @@ sidebarDepth: 2
 ### 获取员工其他信息(+)
 ::: tip
 - 理财师通过手机号码绑定销售前要判断该销售是否存在
-- ps:邀请码就是手机号码
-- 销售邀请码 aid
+- 销售邀请码/手机号码 aid
 :::
 ``` js
 - req
@@ -396,22 +402,32 @@ sidebarDepth: 2
   "aid" : "15201939359",
   "channel" : "11"
 } 
-@return success aid {
+@return success {
     "data": {
-        "userName": "1",
-        "realName": "1",
-        "mobile": "15201939359",
-        "id": 401,
-        "email": "1@1caifu.com",
-        "address": "",
-        "lifePhoto": null,
-        "name": "小包直营机构",
-        "provinceName": "上海市",
-        "cityName": "上海市"
+        "realName": "唐轶",
+        "mobile": "15221953840",
+        "isAuth": true,//是否认证
+        "id": 101726,
+        "email": "1@1.com",
+        "company": "",//公司名称
+        "lifePhoto": "Upload/20180124/2018012417284741961488.png",//头像
+        "address": ""//公司地址
     },
     "isSuccess": true,
     "code": 0,
-    "runSpanTime": 69
+    "runSpanTime": 134
+}
+@return failed{
+    "errMsg": "您查找的用户不存在",
+    "isSuccess": false,
+    "code": 10000,
+    "runSpanTime": 155
+}
+@return failed{
+    "errMsg": "您输入的手机号码有误",
+    "isSuccess": false,
+    "code": 10000,
+    "runSpanTime": 53
 }
 ```
 
@@ -828,8 +844,73 @@ type=11\13\14(时间倒序)
 }
 ```
 
-
-
+### 投资顾问查询
+``` js
+- req 
+@param {string} - mobile //查询的手机号码
+@url post User/checkUserFinancial
+- res
+@return success{
+    "data": {
+        "isAuth": true,
+        "userMapMobile": "",
+        "userMapRealName": "",
+        "id": 707301,
+        "mobile": "13262990292",
+        "exp": 216,
+        "email": "",
+        "realName": "鲍国蓉",
+        "score": 0,
+        "userGradeId": 1,
+        "pofAccountId": "",
+        "managerMobile": "15214385006",
+        "managerName": "汪园欢",
+        "sex": 0,
+        "role": 0,
+        "industry": "",
+        "company": "",
+        "position": "",
+        "workYear": "",
+        "confirmcompany": "",
+        "companyAddress": "",
+        "card": "Upload/IOS/20180725/2018072512395581408907.jpg",
+        "weChat": "",
+        "qq": "",
+        "idCard": "320831199205110427",
+        "confirmphoto": "",
+        "workexperience": "",
+        "birthday": null,
+        "cityname": "上海市",
+        "hobbyproductIntro": "",
+        "mangerType": 0,
+        "jobNum": "X000006",
+        "hobbyProductType": "",
+        "selfIntro": "",
+        "photo": "",
+        "isCard": 10,
+        "isIdCard": 10,
+        "vip": null,
+        "confirmPhoto": "",
+        "imUserName": "18hu",
+        "authStatus": 0,
+        "motto": null,
+        "manageCapital": 0,
+        "customerCount": 0,
+        "bankCount": 1,
+        "userAddress": 0,
+        "cid":"lin5"
+    },
+    "isSuccess": true,
+    "code": 0,
+    "runSpanTime": 460
+}
+@return failed{
+    "errMsg": "没有找到您要查找的用户",
+    "isSuccess": false,
+    "code": 10000,
+    "runSpanTime": 43
+}
+```
 
 
 ## 新闻
@@ -1029,6 +1110,25 @@ type=11\13\14(时间倒序)
 待发货 <=20; 已发货 30; 已完成：40
 
 :::
+
+### 不同状态的订单数量
+``` js
+- req
+@param {string} - userId 
+@url post erp/mall/order/getStatistical
+- res
+@return success{
+    "data": {
+        "waitingDelivery": 7, //待发货
+        "hasDelivery": 0, //待收货
+        "successed": 1 //已完成
+    },
+    "isSuccess": true,
+    "code": 0,
+    "runSpanTime": 55
+}
+```
+
 ### 商城列表
 ``` js
 - req 
@@ -1165,39 +1265,122 @@ type=11\13\14(时间倒序)
 @url post site/MallOrderList
 - res
 @return success{
-    "data": {
-        "totalCount": 2,
-        "data": [
-            {
-                "id": 1301,
-                "orderCode": "M2019053115404915", //订单编号
-                "score": 1000, //金额
-                "goodsId": 81,
-                "goodsTitle": "100元兑",
-                "goodsPic": "Upload/GoodsImage/20170405/65a602d04ada43bcb32b9fb97479c667_76.jpg",
-                "goodsType": "时尚",
-                "count": 1,
-                "status": 0
-            },
-            {
-                "id": 1302,
-                "orderCode": "M2019053115405140",
-                "score": 1000,
-                "goodsId": 81,
-                "goodsPic": "Upload/GoodsImage/20170405/65a602d04ada43bcb32b9fb97479c667_76.jpg",
-                "goodsTitle": "100元兑",
-                "goodsType": "时尚",
-                "count": 1,
-                "status": 1
-            }
-        ],
-        "errCode": null,
-        "errMsg": null,
-        "isSucceed": true
-    },
+    "data": [
+        {
+            "id": 1301,
+            "orderCode": "M2019053115404915",
+            "score": 1000,
+            "goodsId": 81,
+            "goodsTitle": "100元兑",
+            "goodsType": "时尚",
+            "goodsPic": "Upload/GoodsImage/20170405/65a602d04ada43bcb32b9fb97479c667_76.jpg",
+            "count": 1,
+            "status": 0
+        },
+        {
+            "id": 1302,
+            "orderCode": "M2019053115405140",
+            "score": 1000,
+            "goodsId": 81,
+            "goodsTitle": "100元兑",
+            "goodsType": "时尚",
+            "goodsPic": "Upload/GoodsImage/20170405/65a602d04ada43bcb32b9fb97479c667_76.jpg",
+            "count": 1,
+            "status": 30
+        },
+        {
+            "id": 1303,
+            "orderCode": "M2019053117191443",
+            "score": 1000,
+            "goodsId": 81,
+            "goodsTitle": "100元兑",
+            "goodsType": "时尚",
+            "goodsPic": "Upload/GoodsImage/20170405/65a602d04ada43bcb32b9fb97479c667_76.jpg",
+            "count": 1,
+            "status": 0
+        },
+        {
+            "id": 1304,
+            "orderCode": "M2019053117295825",
+            "score": 1000,
+            "goodsId": 81,
+            "goodsTitle": "100元兑",
+            "goodsType": "时尚",
+            "goodsPic": null,
+            "count": 1,
+            "status": 20
+        },
+        {
+            "id": 1305,
+            "orderCode": "M2019053117434447",
+            "score": 1000,
+            "goodsId": 81,
+            "goodsTitle": "100元兑",
+            "goodsType": "时尚",
+            "goodsPic": "Upload/GoodsImage/20170405/65a602d04ada43bcb32b9fb97479c667_76.jpg",
+            "count": 1,
+            "status": 40
+        },
+        {
+            "id": 1306,
+            "orderCode": "M2019053117441390",
+            "score": 1000,
+            "goodsId": 81,
+            "goodsTitle": "100元兑",
+            "goodsType": "时尚",
+            "goodsPic": "Upload/GoodsImage/20170405/65a602d04ada43bcb32b9fb97479c667_76.jpg",
+            "count": 1,
+            "status": 30
+        },
+        {
+            "id": 1307,
+            "orderCode": "M2019053117591089",
+            "score": 1000,
+            "goodsId": 81,
+            "goodsTitle": "100元兑",
+            "goodsType": "时尚",
+            "goodsPic": "Upload/GoodsImage/20170405/65a602d04ada43bcb32b9fb97479c667_76.jpg",
+            "count": 1,
+            "status": 0
+        },
+        {
+            "id": 1308,
+            "orderCode": "M2019060316092727",
+            "score": 1000,
+            "goodsId": 81,
+            "goodsTitle": "100元兑",
+            "goodsType": "时尚",
+            "goodsPic": "Upload/GoodsImage/20170405/65a602d04ada43bcb32b9fb97479c667_76.jpg",
+            "count": 1,
+            "status": 0
+        },
+        {
+            "id": 1310,
+            "orderCode": "M2019060414512443",
+            "score": 1000,
+            "goodsId": 81,
+            "goodsTitle": "100元兑",
+            "goodsType": "时尚",
+            "goodsPic": "Upload/GoodsImage/20170405/65a602d04ada43bcb32b9fb97479c667_76.jpg",
+            "count": 1,
+            "status": 0
+        },
+        {
+            "id": 1314,
+            "orderCode": "M2019060416325579",
+            "score": 2000,
+            "goodsId": 74,
+            "goodsTitle": "手机充值卡100",
+            "goodsType": "特别奖品",
+            "goodsPic": "Upload/GoodsImage/20170405/8cf9ed0c698f4229bb2fa73c236b0a8b_76.jpg",
+            "count": 2,
+            "status": 0
+        }
+    ],
+    "totalCount": 18,
     "isSuccess": true,
     "code": 0,
-    "runSpanTime": 61
+    "runSpanTime": 178
 }
 ```
 
@@ -1396,7 +1579,7 @@ type=11\13\14(时间倒序)
     "runSpanTime": 88
 }
 @return success{
-    "data": "暂无存续信息",
+    "data": {},
     "isSuccess": true,
     "code": 0,
     "runSpanTime": 324
@@ -1438,3 +1621,103 @@ type=11\13\14(时间倒序)
     "runSpanTime": 195
 }
 ```
+
+
+## IM
+### 通讯录
+``` js
+- req 
+@param {string} - userMobile
+@param {string} - userId
+@param {string} - channel
+@url post im/IMContactList
+- res
+@return success{//直客端
+    "kefu": [
+        {
+            "ex": "{\"personnelType\":1}",
+            "icon": "https://rescdn.xiaohu.in/Upload/Temp/20150203/default-icon.png",
+            "accid": "bss",
+            "name": "1875会员",
+            "gender": 0
+        }
+    ],
+    "licaishi": [
+        {
+            "ex": "{\"personnelType\":2}",
+            "icon": "https://img.1caifu.com/Upload/Temp/20150203/default-icon.png",
+            "accid": "6tb5rt",
+            "name": "jason",
+            "gender": 0
+        }
+    ],
+    "isSuccess": true,
+    "code": 0,
+    "runSpanTime": 665
+}
+@return success{//理财师端
+    "kefu":[{
+
+    }],
+    "kehu":[{//直客
+
+    }],
+    "fulijingli":[{
+
+    }],
+    "huiyuan":[{//以服务经理身份登陆，名下的会员
+
+    }]
+}
+```
+
+## 活动
+### 直客端注册点击领取金币
+::: tip
+*   新用户：提示“获取388金币”
+*   已领取过的用户：提示“此活动用户已参与”
+*   老用户：提示“活动仅限新注册用户参与”
+:::
+``` js
+- req 
+@param {string} - userId 
+@url post erp/user/useractivity/receive
+- res
+@return success{
+    "errMsg": "此活动用户已参与",
+    "isSuccess": false,
+    "code": 10000,
+    "runSpanTime": 92
+}
+```
+
+### 直客端判断用户是否领取过金币
+``` js
+- req 
+@param {string} - userId 
+@url post erp/user/useractivity/checkReceived
+- res
+@return success{
+    "data": true,
+    "isSuccess": true,
+    "code": 0,
+    "runSpanTime": 206
+}
+```
+
+## 新增
+### 官网用户协议
+::: tip
+*   判断是否度过用户协议
+:::
+``` js
+- req 
+@param {string} - userId 
+@url post erp/user/checkAgreementIsReaded
+- res
+@return success{
+    "data": true,
+    "isSuccess": true,
+    "code": 0,
+    "runSpanTime": 206
+}

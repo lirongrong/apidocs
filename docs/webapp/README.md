@@ -4,6 +4,12 @@ sidebar: auto
 sidebarDepth: 2
 ---
 
+## 小程序参考网站
+* 微信UI在线预览 https://weui.io/
+* weui-git地址 https://github.com/Tencent/weui-wxss
+* 小程序开发资源汇总 https://github.com/justjavac/awesome-wechat-weapp
+
+
 ## 小程序中canvas绘制和兼容性处理方法
 ``` js
 //view层,这里的id要分别定义，不然报错

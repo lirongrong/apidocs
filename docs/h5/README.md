@@ -440,8 +440,297 @@ sidebarDepth: 2
 }
 ```
 
+## 个人工作台
+### baseuserinfo
+```js
+@url post user/baseuserinfo
+- req
+{
+	apiVersion: "1.0.0"
+    fromApp: true
+}
+- res
+@return  
+{
+   "code": 0,
+   "data":{
+        "authType": 3
+        "id": 23610
+        "idcard": null
+        "isAuth": true
+        "isCard": 10
+        "isLogin": true
+        "mobile": "15921250253"
+        "photo": "Upload/IOS/20200224/2020022414250024946778.jpg"
+        "realname": "宋飞"
+        "role": 8
+        "surveyUrl": ""
+        "vip": 0
+   },
+   "isSuccess": true,
+   "runSpanTime": 44
+}
+```
 
+### getUserBaseProfileDetail
+```js
+@url post user/getUserBaseProfileDetail
+- req
+{
+    apiVersion: "1.0.0"
+    cid: "n1q"
+    fromApp: true
+}
+- res
+@return
+{
+    code:0,
+    data:{
+        authStatus: 10
+        bankCount: 6
+        birthday: "2017-05-17T00:00:00.000Z"
+        card: "Upload/IOS/20190117/2019011715251278936606.jpg"
+        cityname: "北京市"
+        company: "壹财富"
+        companyAddress: ""
+        confirmPhoto: "Upload/Android/20180606/32539.png"
+        confirmcompany: ""
+        confirmphoto: "Upload/Android/20180606/32539.png"
+        customerCount: 0
+        email: "felix@1caifu.com"
+        exp: 63674
+        hobbyProductType: "8"
+        hobbyproductIntro: "债券基金"
+        id: 23610
+        idCard: ""
+        imUserName: "71n2"
+        industry: ""
+        isAuth: true
+        isCard: 10
+        isIdCard: 10
+        jobNum: "X000000"
+        manageCapital: 0
+        managerMobile: "15921250253"
+        managerName: "宋飞"
+        mangerType: 0
+        mobile: "15921250253"
+        motto: "用专业的技术优质的服务服务于每个客户"
+        photo: "Upload/IOS/20200224/2020022414250024946778.jpg"
+        pofAccountId: ""
+        position: ""
+        qq: ""
+        realName: "宋飞"
+        role: 8
+        score: 121
+        selfIntro: ""
+        sex: 1
+        userAddress: 6
+        userGradeId: 3
+        userMapMobile: ""
+        userMapRealName: ""
+        vip: null
+        weChat: ""
+        workYear: "10"
+        workexperience: "管理规模超50亿，服务超过60位高净值客户，经验丰富，眼光独到"
+    },
+    isSuccess: true
+    runSpanTime: 106
+}
+```
 
+### CollectGetListFull
+```js
+@url post User/CollectGetListFull
+- req{
+    apiVersion: "3.0.0"
+    cid: "n1q"
+    fromApp: true   
+}
+- res{
+    code:0,
+    data:[
+        {
+            assets: 4.0715
+            backBrokerage: null
+            bestEarningRate: "浮动"
+            bestEarningRate_back: 0
+            bestEarningRate_fore: "浮动"
+            bestEmployeePrice: "待定"
+            bestEmployeePrice_back: 0
+            bestEmployeePrice_fore: "待定"
+            bestGroupPrice: "待定"
+            bestGroupPrice_back: 0
+            bestGroupPrice_fore: "待定"
+            bestPrice: "待定"
+            bestPrice_back: 0
+            bestPrice_fore: "待定"
+            buyStart: 100
+            category: 10
+            cityName: null
+            collectId: 10074
+            company: "弘茗资产"
+            createTime: "2017-12-19 16:59:32"
+            daXiao: null
+            dyl: null
+            fundChannel: "自主发行"
+            fundInvest: ""
+            fundType: "套利策略"
+            fxList: null
+            groupName: null
+            guiMo: null
+            investmentStart: 0
+            investmentTerm: ""
+            isChosen: false
+            isHot: false
+            isHotSale: false
+            isOnSale: 1
+            isRecommend: false
+            jdt: null
+            level: 99
+            listingTime: null
+            managementOrganization: ""
+            manager: "林娜"
+            parentId: 23910
+            payStatus: null
+            peibi: ""
+            phase: 1
+            productId: 23910
+            productTags: ""
+            productTypeId: 4
+            productTypeName: "证券基金"
+            producttagids_intarray: ""
+            proviceName: null
+            qiXian: "0"
+            qiXianTitle: "0个月"
+            qiXianX: 0
+            qiXianY: 0
+            quitPeriod1: 0
+            quitPeriod2: 0
+            raiseProgress: ""
+            raiseUpdateTime: ""
+            recentJz: 0.9996
+            row: "1"
+            sTitle: "弘茗套利稳健管理型6号(第1期)"
+            saleStatus: 125
+            saleStatusName: "开放募集中"
+            saleType: "onsale"
+            shouYiType: ""
+            tagsArray: []
+            title: "弘茗套利稳健管理型6号(第1期)"
+            touZiMenkan: null
+            touZilingYu: null
+            updateTime: "2019-10-15 23:50:56"
+            videoFile: ""
+            visitCount: 1270
+        }
+    ],
+    isSuccess: true
+    runSpanTime: 89
+    totalCount: 14
+}
+```
 
+### getUserWorkHistoryList
+``` js
+@url post User/getUserWorkHistoryList
+- req{
+    apiVersion: "1.0.0"
+    cid: "n1q"
+    fromApp: true
+}
+- res{
+    code: 0,
+    data:[
+        {
+            aum: 100000
+            beginDate: "2014-10-19T00:00:00.000Z"
+            company: "上海小虎金融信息服务有限公司"
+            createTime: "2018-11-19T14:06:48.716Z"
+            department: null
+            endDate: "2018-04-19T00:00:00.000Z"
+            id: 17
+            title: "销售经理"
+        }
+    ],
+    isSuccess: true
+    runSpanTime: 53
+}
+```
 
+### getUserCertificateList
+``` js
+@url post User/getUserCertificateList
+- req{
+    apiVersion: "1.0.0"
+    cid: "n1q"
+    fromApp: true
+}
+- res{
+    code: 0,
+    data:[
+        {
+            certificateImage: "https://rescdn.xiaohu.in/images/certification/04.png"
+            certificateTypeId: 4
+            certificateTypeName: "基金从业资格证"
+            createTime: "2018-11-19T14:07:11.290Z"
+            id: 19
+            image: "https://rescdn.xiaohu.in/images/certification/04.png"
+            sn: "ABCD12345678"
+        }
+    ],
+    isSuccess: true,
+    runSpanTime: 65
+}
+```
 
+### GetNewsCommentByUser
+``` js
+@url post Site/GetNewsCommentByUser
+- req{
+    apiVersion: "1.0.0"
+    cid: "n1q"
+    fromApp: true
+    pageIndex: 1
+    pageSize: 3
+}
+- res{
+    code: 0,
+    data:[
+        {
+            comment: "aa"
+            commentTime: "2019-11-12T15:39:50.336Z"
+            createTime: "2019-11-12T15:39:50.336Z"
+            id: 236
+            image: "https://rescdn.xiaohu.in/spider/1819125-8570a25af43b9fc1f7818501775d1d52.jpeg"
+            newsId: 63286
+            row: "1"
+            title: "中国央行定向降准扩围料仅是预热，助稳资金面节前或再派“红包”"
+            updateTime: "2019-11-12T15:39:50.336Z"
+            userId: 23610
+        }
+    ],
+    isSuccess: true
+    runSpanTime: 31
+    totalCount: 5
+}
+```
+
+### CheckBindWangyi
+``` js
+@url post im/CheckBindWangyi
+- req{
+    apiVersion: "1.0.0"
+    channel: "15"
+    fromApp: true
+    mapId: 23610
+    source: "userInfo"
+}
+- res{
+    accid: "5ttnq"
+    code: 0
+    isSuccess: true
+    pCIsClose: false
+    runSpanTime: 47
+    token: "899610e1c879bf4edf1a242a7bcd9f28"
+}
+```
